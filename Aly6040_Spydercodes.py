@@ -9,7 +9,7 @@ st.markdown("A real-time overview of patient care and service performance across
 
 #Load data
 def load_data():
-    df = pd.read_csv("C:\Users\USER\Desktop\ALY6040_M4\mayo_clinic_performance_data.csv")
+    df = pd.read_csv("mayo_clinic_performance_data.csv")
     df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
     return df.dropna(subset=["Date"])
 
@@ -19,9 +19,6 @@ def load_data(file):
     return pd.read_csv(file, parse_dates=['Date'])
 
 # Main dashboard logic
-if uploaded_file is not None:
-    df = load_data(uploaded_file)
-
     # Sidebar filters
     st.sidebar.title("🔎 Filters")
     selected_location = st.sidebar.multiselect("Select Location", df['Location'].unique(), default=df['Location'].unique())
