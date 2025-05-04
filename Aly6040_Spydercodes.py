@@ -7,8 +7,11 @@ st.set_page_config(page_title="Mayo Clinic Dashboard", layout="wide")
 st.title("🏥 Mayo Clinic Operational Dashboard")
 st.markdown("A real-time overview of patient care and service performance across departments.")
 
-# File uploader
-uploaded_file = st.file_uploader("Upload the Mayo Clinic CSV file", type=["csv"])
+#Load data
+def load_data():
+    df = pd.read_csv("mayo_clinic_performance_data.csv")
+    df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
+    return df.dropna(subset=["Date"])
 
 # Load data function
 @st.cache_data
