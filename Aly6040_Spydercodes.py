@@ -9,7 +9,7 @@ st.markdown("A real-time overview of patient care and service performance across
 
 #Load data
 def load_data():
-    df = pd.read_csv("mayo_clinic_performance_data.csv")
+    df = pd.read_csv("C:\Users\USER\Desktop\ALY6040_M4\mayo_clinic_performance_data.csv")
     df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
     return df.dropna(subset=["Date"])
 
